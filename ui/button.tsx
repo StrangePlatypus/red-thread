@@ -5,12 +5,12 @@ type Variant = "primary" | "secondary";
 type Position = "left" | "center" | "right"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string | number;
+  children?: string | number | React.ReactNode;
   icon?: React.ReactNode;
   disabled: boolean;
   loading: boolean;
   variant: Variant;
-  position: Position
+  position?: Position
 }
 
 export default function Button({
@@ -19,7 +19,8 @@ export default function Button({
   disabled,
   loading,
   variant,
-  position
+  position,
+  ...props
 }: ButtonProps) {
 
   let positionStyle
@@ -27,7 +28,7 @@ export default function Button({
   if(position === "left"){
     positionStyle = "justify-self-start"
   } else if (position === "center"){
-    positionStyle = "justify-self-center"
+    positionStyle = "justify-self-center w-full"
   } else if (position === "right"){
     positionStyle = "justify-self-end"
   }
@@ -36,19 +37,19 @@ export default function Button({
 
   const variants: Record<Variant, string> = {
     primary: `${baseStyle} bg-(--offred) hover:bg-(--red)`,
-    secondary: `${baseStyle} bg-(--white) border-2 border-(--offred) text-(--offred) hover:border-(--red) hover:text-(--red)`,
+    secondary: `${baseStyle} bg-(--white) border-2 border-(--offred) text-(--offred) hover:border-(--red) hover:text-(--red)`
   };
 
   if (icon) {
     return (
-      <button disabled={disabled || loading} className={variants[variant]}>
+      <button disabled={disabled || loading} className={variants[variant]} {...props}>
         {icon}
       </button>
     );
   }
 
   return (
-    <button disabled={disabled || loading} className={variants[variant]}>
+    <button disabled={disabled || loading} className={variants[variant]} {...props}>
       {children}
       {loading && <Loader />}
     </button>

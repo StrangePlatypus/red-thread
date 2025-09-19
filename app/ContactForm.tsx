@@ -77,7 +77,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Form onSubmit={sendEmail} action="" className="flex-1 relative">
+    <Form onSubmit={sendEmail} action="" className="w-fit mx-auto">
       <div className="flex flex-wrap gap-6 mb-4">
         <Input
           name="name"

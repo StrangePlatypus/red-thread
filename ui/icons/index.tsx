@@ -1,5 +1,7 @@
 export { default as Calendar } from './Calendar'
+export { default as Close } from './Close'
 export { default as Enveloppe } from './Enveloppe'
+export { default as Eye } from './Eye'
 export { default as Information } from './Information'
 export { default as Loader } from './Loader'
 export { default as User } from './User'
