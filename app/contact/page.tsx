@@ -1,4 +1,4 @@
-import ContactForm from "@/app/ContactForm";
+import ContactForm from "@/app/contact/ContactForm";
 import Banner from "@/ui/banner";
 
 export default function Contact() {

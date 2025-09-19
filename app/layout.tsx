@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins, Cinzel } from "next/font/google";
 import "./globals.css";
 import { Enveloppe, Information, User } from "@/ui/icons";
-import ContactForm from "./ContactForm";
 
 const poppins = Poppins({
   variable: "--font-poppins",
