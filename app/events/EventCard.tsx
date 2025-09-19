@@ -1,14 +1,16 @@
+import { Delete } from "@/ui/icons";
 import { Event } from "./types";
 
-type EventCardProps = { event: Event };
+type EventCardProps = { event: Event, deleteEvent: (id: string) => void };
 
-export default function EventCard({ event }: EventCardProps) {
+export default function EventCard({ event, deleteEvent }: EventCardProps) {
+
   return (
-    <div className="w-full rounded-xl border border-(--brown) flex flex-col gap-2 text-sm">
-      <h3 className="py-2 px-4 font-medium text-xl font-cinzel bg-(--brown) rounded-t-[10px]">
-        {event.title}
-      </h3>
-
+    <div className="w-full rounded-xl border border-(--brown) flex flex-col gap-2 text-sm relative" id={event.id}>
+      <div className="py-2 px-4 font-medium text-xl font-cinzel bg-(--brown) rounded-t-[10px] flex justify-between">
+        <h3 className="max-w-full overflow-hidden text-ellipsis">{event.title}</h3>
+        <button onClick={() => deleteEvent(event.id!)} className="cursor-pointer"><Delete /></button>
+      </div>
       <div className="mx-4 py-2 border-b border-(--brown)">
         <p>Date : {event.date}</p>
         <p>

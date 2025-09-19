@@ -36,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${cinzel.variable} antialiased min-h-screen flex flex-col justify-between items-center text-(--white)`}
       >
+        {/* <Modal /> */}
         <header className="font-poppins flex py-4 px-10 w-full justify-between sticky top-0 z-999 bg-background">
           <h1 className="font-cinzel text-3xl">Headgasket</h1>
           <nav className="flex items-center gap-20">
@@ -49,17 +50,17 @@ export default function RootLayout({
           </div>
         </header>
         {children}
-        <footer className="flex justify-around w-full">
-            <p>Informations générales :</p>
+        <footer className="flex justify-around w-full py-6">
             <div className="flex gap-1 items-center">
               <Enveloppe />
+              <p>Contactez-nous par mail :</p>
               <a href="mailto:headgasket@gmail.com?subject=Contact">
                 headgasket@gmail.com
               </a>
             </div>
             <div className="flex gap-1 items-center">
               <Information />
-              <a href="/">Mentions légales</a>
+              <p>Mentions légales</p>
             </div>
         </footer>
       </body>

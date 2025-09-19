@@ -20,10 +20,16 @@ export default function FormEvent() {
   });
 
   useEffect(() => {
-    if(newEvent.title != "" || newEvent.date != "" || newEvent.address != "" || newEvent.postalCode != "" || newEvent.city != ""){
-        setDisabled(false)
+    if (
+      newEvent.title != "" ||
+      newEvent.date != "" ||
+      newEvent.address != "" ||
+      newEvent.postalCode != "" ||
+      newEvent.city != ""
+    ) {
+      setDisabled(false);
     }
-  })
+  });
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -35,23 +41,40 @@ export default function FormEvent() {
     });
   }
 
-  function getEvents(): Event[]{
-    const eventsJSON = sessionStorage.getItem('events');
-    if(!eventsJSON) return [];
-    
-    return JSON.parse(eventsJSON) as Event[]
+  function getEvents(): Event[] {
+    const eventsJSON = sessionStorage.getItem("events");
+    if (!eventsJSON) return [];
+
+    return JSON.parse(eventsJSON) as Event[];
   }
 
-  function onSubmit(){
-    setLoading(true)
+  function onSubmit() {
+    setLoading(true);
     const events = getEvents();
-    events.push(newEvent)
-    sessionStorage.setItem("events", JSON.stringify(events))
-    setLoading(false)
+    setNewEvent({
+      ...newEvent,
+      id: Date.now().toString()
+    })
+    events.push(newEvent);
+    sessionStorage.setItem("events", JSON.stringify(events));
+    setNewEvent({
+      id: "",
+      title: "",
+      date: "",
+      address: "",
+      postalCode: "",
+      city: "",
+      description: "",
+    });
+    setLoading(false);
   }
 
   return (
-    <Form action="" onSubmit={onSubmit} className="flex flex-col w-full mx-auto gap-4">
+    <Form
+      action=""
+      onSubmit={onSubmit}
+      className="flex flex-col w-full mx-auto gap-4"
+    >
       <Input
         name="title"
         variant="primary"
@@ -111,7 +134,15 @@ export default function FormEvent() {
         onChange={handleChange}
         disabled={loading}
       />
-      <Button type="submit" disabled={disabled || loading} loading={loading} variant="primary" position="right">Valider</Button>
+      <Button
+        type="submit"
+        disabled={disabled || loading}
+        loading={loading}
+        variant="primary"
+        position="right"
+      >
+        Valider
+      </Button>
     </Form>
   );
 }
