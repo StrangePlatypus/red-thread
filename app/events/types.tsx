@@ -1,9 +1,9 @@
 export interface Event {
-    id: number,
+    id?: string,
     title: string,
-    date: Date,
+    date: string,
     address: string,
-    postalCode: number,
+    postalCode: string,
     city: string,
     description?: string,
 }

@@ -30,7 +30,7 @@ export default function Button({
   } else if (position === "center"){
     positionStyle = "justify-self-center w-full"
   } else if (position === "right"){
-    positionStyle = "justify-self-end"
+    positionStyle = "self-end w-fit"
   }
 
   const baseStyle = `font-poppins ${positionStyle} justify-center rounded-full px-4 py-2 gap-2 flex items-center cursor-pointer disabled:bg-gray-400 transition-all duration-300 min-w-[150px]`
